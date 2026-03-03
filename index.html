@@ -1636,10 +1636,10 @@
         }
         document.getElementById('streak-days').innerText = streak;
 
-        // --- EXAM COUNTDOWN ---
+// --- EXAM COUNTDOWN ---
         const examDate = new Date();
-        examDate.setDate(examDate.getDate() + 1);
-        examDate.setHours(9, 0, 0, 0); // Assuming 9 AM tomorrow
+        // The first number is the hour in 24-hour format (13 = 1 PM). The second is the minute (10).
+        examDate.setHours(13, 10, 0, 0); 
         
         setInterval(() => {
             const now = new Date();
@@ -1653,6 +1653,7 @@
             const s = Math.floor((diff % (1000 * 60)) / 1000);
             document.getElementById('exam-countdown').innerText = `${h}h ${m}m ${s}s left`;
         }, 1000);
+
 
         // --- TEXT-TO-SPEECH ---
         function speakText(element) {
