@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#0b0f19">
-    <title>Ultimate Study Module - EFM, HRM & FM</title>
+    <title>Ultimate Study Module - EFM, HRM, FM & IB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
         /* TECHY COLOR SCHEME & BASE STYLES */
         :root { 
@@ -47,11 +48,11 @@
         /* SIDEBAR & NAVIGATION */
         .sidebar { width: 300px; background-color: var(--sidebar-bg); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-right: 1px solid rgba(255,255,255,0.1); color: var(--sidebar-text); overflow-y: auto; height: 100%; padding-bottom: 20px; flex-shrink: 0; box-shadow: 4px 0 20px rgba(0,0,0,0.3); z-index: 10; display: flex; flex-direction: column; transition: transform 0.4s ease, opacity 0.4s ease;}
         .subject-tabs { display: flex; background: rgba(0,0,0,0.6); border-bottom: 2px solid var(--primary); position: sticky; top: 0; z-index: 60; backdrop-filter: blur(10px);}
-        .subj-btn { flex: 1; padding: 15px; background: transparent; color: var(--text-main); border: none; outline: none; cursor: pointer; font-weight: bold; font-size: 1.1rem; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .subj-btn { flex: 1; padding: 15px 5px; background: transparent; color: var(--text-main); border: none; outline: none; cursor: pointer; font-weight: bold; font-size: 1rem; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
         .subj-btn:hover { background: rgba(255,255,255,0.1); }
         .subj-btn.active { background: rgba(255,255,255,0.05); color: var(--primary); border-bottom: 3px solid var(--primary); text-shadow: 0 0 10px var(--primary); }
         
-        /* QUICK SETTINGS BAR (NEW FEATURE) */
+        /* QUICK SETTINGS BAR */
         .quick-settings { display: flex; justify-content: space-around; padding: 10px; background: rgba(0,0,0,0.4); border-bottom: 1px solid var(--border); }
         .qs-btn { background: transparent; color: var(--text-main); border: 1px solid var(--text-main); padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.8rem; transition: 0.3s; }
         .qs-btn:hover { background: var(--primary); color: #000; border-color: var(--primary); }
@@ -133,13 +134,99 @@
         /* FEATURE: AUTO SAVE TOAST */
         #toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #000; padding: 10px 20px; border-radius: 20px; font-weight: bold; opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 9999; box-shadow: 0 0 15px var(--accent); }
 
-        /* HRM THEME OVERRIDES */
+        /* THEME OVERRIDES */
         body.hrm-theme { --primary: #a855f7; --secondary: #f59e0b; --accent: #3b82f6; background: linear-gradient(-45deg, #1e1b4b, #312e81, #0f172a, #1e1b4b); background-size: 400% 400%; }
         body.hrm-theme .matrix-bg { background: repeating-linear-gradient(180deg, transparent, rgba(168, 85, 247, 0.2) 2px, transparent 4px); }
         
-        /* FM THEME OVERRIDES (NEW) */
         body.fm-theme { --primary: #fbbf24; --secondary: #10b981; --accent: #f87171; background: linear-gradient(-45deg, #064e3b, #0f172a, #451a03, #0f172a); background-size: 400% 400%; }
         body.fm-theme .matrix-bg { background: repeating-linear-gradient(180deg, transparent, rgba(251, 191, 36, 0.2) 2px, transparent 4px); }
+
+        /* ========================================== */
+        /* === NEW IB THEME & FEATURES CSS START ==== */
+        /* ========================================== */
+        
+        /* IB THEME OVERRIDES */
+        body.ib-theme { 
+            --primary: #00ffcc; 
+            --secondary: #ff00ff; 
+            --accent: #ffff00; 
+            background: linear-gradient(-45deg, #001f3f, #1a0033, #000, #1a1a00); 
+            background-size: 400% 400%; 
+            font-family: 'Outfit', sans-serif;
+        }
+        body.ib-theme h1, body.ib-theme h2, body.ib-theme .unit-title {
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+        }
+        body.ib-theme .matrix-bg { background: repeating-linear-gradient(180deg, transparent, rgba(0, 255, 204, 0.2) 2px, transparent 4px); }
+        body.ib-theme h1 { background: linear-gradient(to right, #00ffcc, #ff00ff, #ffff00, #00ffcc); background-size: 200% auto; color: transparent; -webkit-background-clip: text; background-clip: text; animation: shine 5s linear infinite; }
+
+        /* BESTIE EASTER EGG GLOW & TEXT */
+        @keyframes slayyPulse {
+            0%, 100% { box-shadow: inset 0 0 50px 20px #ff00ff, 0 0 50px #ff00aa; }
+            50% { box-shadow: inset 0 0 150px 50px #ff00aa, 0 0 100px #ff00ff; filter: brightness(1.2); }
+        }
+        body.slayy-mode { animation: slayyPulse 1.5s infinite alternate !important; border: 5px solid #ff00ff; }
+        #slayy-text {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0);
+            font-size: 15vw; color: #ff00ff; text-shadow: 0 0 50px #ff00aa, 0 0 100px #fff;
+            z-index: 10000; font-weight: 800; font-family: 'Space Grotesk', sans-serif;
+            pointer-events: none; transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+        }
+        .show-slayy { transform: translate(-50%, -50%) scale(1) !important; opacity: 1 !important; animation: pulseSlayy 0.5s infinite alternate; }
+        @keyframes pulseSlayy { 0% { transform: translate(-50%, -50%) scale(1); } 100% { transform: translate(-50%, -50%) scale(1.1); } }
+
+        /* FEATURE 1: HOLOGRAPHIC AI TUTOR */
+        .holo-tutor {
+            background: rgba(0, 255, 204, 0.05); border: 1px solid var(--primary); border-radius: 15px;
+            padding: 20px; box-shadow: 0 0 20px rgba(0,255,204,0.2), inset 0 0 20px rgba(0,255,204,0.1);
+            position: relative; overflow: hidden; margin: 20px 0;
+        }
+        .holo-tutor::before {
+            content:''; position:absolute; top:-100%; left:0; width:100%; height:100%;
+            background: linear-gradient(to bottom, transparent, rgba(0,255,204,0.3), transparent);
+            animation: scanline 3s linear infinite; pointer-events:none;
+        }
+        @keyframes scanline { 0% {top:-100%;} 100% {top:100%;} }
+        .holo-btn { background:transparent; border: 1px dashed var(--primary); color: var(--primary); padding: 8px 15px; border-radius:20px; cursor:pointer; font-family:'Space Grotesk'; transition:0.3s; margin:5px; }
+        .holo-btn:hover { background:var(--primary); color:#000; box-shadow:0 0 15px var(--primary); transform:scale(1.05); }
+
+        /* FEATURE 2: PESTEL DRAG DASHBOARD */
+        .pestel-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-top:20px; }
+        .pestel-zone { min-height: 100px; border: 2px dashed rgba(255,255,255,0.3); border-radius: 10px; padding: 10px; text-align: center; transition: 0.3s; background: rgba(0,0,0,0.5); }
+        .pestel-zone h4 { color: #aaa; margin-bottom: 10px; }
+        .pestel-zone.drag-over { background: rgba(0, 255, 204, 0.2); border-color: var(--primary); }
+        .pestel-card { background: var(--secondary); color: #fff; padding: 8px; border-radius: 5px; cursor: grab; font-size: 0.85rem; font-weight: bold; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); margin-bottom:5px; }
+
+        /* FEATURE 3: HYPERSPACE POMODORO */
+        body.hyperspace-active .matrix-bg { animation: matrixRain 1s linear infinite !important; opacity:0.3; }
+        body.hyperspace-active::before { animation: floatGrid 0.5s linear infinite !important; opacity: 0.2;}
+
+        /* FEATURE 4: TRADE ROUTE MAP */
+        .svg-world-map { width:100%; max-width: 600px; height:300px; background:#0b0f19; border:1px solid var(--accent); border-radius:10px; display:block; margin: 20px auto; position: relative; box-shadow: 0 0 20px rgba(255,255,0,0.2); }
+        .map-node { fill: #fff; cursor: pointer; transition: 0.3s; }
+        .map-node:hover { fill: var(--primary); filter: drop-shadow(0 0 5px var(--primary)); }
+        .route-line { stroke: var(--secondary); stroke-width: 3; stroke-dasharray: 10; animation: dashMove 2s linear infinite; opacity: 0; transition: opacity 0.3s; }
+        @keyframes dashMove { to { stroke-dashoffset: -20; } }
+
+        /* FEATURE 5: NEWS TICKER */
+        .news-ticker-container { width: 100%; background: #000; border-bottom: 2px solid var(--primary); color: var(--primary); font-family: 'Space Grotesk'; padding: 5px 0; overflow: hidden; position: relative; z-index: 50; }
+        .news-ticker { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 25s linear infinite; font-size: 0.9rem; font-weight: bold; letter-spacing: 1px; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+        /* FEATURE 6: PORTER'S DIAMOND SVG */
+        .porter-svg { width: 100%; max-width: 400px; margin: 20px auto; display: block; filter: drop-shadow(0 0 10px rgba(0,255,204,0.2)); }
+        .porter-poly { fill: rgba(0,0,0,0.5); stroke: var(--primary); stroke-width: 2; cursor: pointer; transition: 0.3s; }
+        .porter-poly:hover { fill: rgba(0,255,204,0.2); stroke: #fff; }
+        .porter-text { fill: #fff; font-size: 14px; font-weight: bold; pointer-events: none; text-anchor: middle; font-family: 'Space Grotesk'; }
+        
+        /* FEATURE 7: TRIPLE IMPACT WHEEL */
+        .econ-wheel-container { position: relative; width: 250px; height: 250px; margin: 30px auto; border-radius: 50%; border: 2px dashed var(--secondary); animation: rotateWheel 20s linear infinite; }
+        .econ-node { position: absolute; width: 80px; height: 80px; background: rgba(0,0,0,0.8); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 0.75rem; font-weight: bold; color: var(--accent); animation: counterRotate 20s linear infinite; box-shadow: 0 0 15px rgba(255,255,0,0.3); }
+        @keyframes rotateWheel { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes counterRotate { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+        .n1 { top: -40px; left: 85px; } .n2 { top: 85px; right: -40px; } .n3 { bottom: -40px; left: 85px; } .n4 { top: 85px; left: -40px; }
 
         /* SCIENTIFIC CALCULATOR STYLES */
         #sci-calc { position: fixed; top: 100px; right: 20px; width: 300px; background: rgba(15,23,42,0.95); border: 2px solid var(--primary); border-radius: 10px; z-index: 10000; box-shadow: 0 0 20px rgba(0,0,0,0.8); display: none; flex-direction: column; overflow: hidden; backdrop-filter: blur(10px); }
@@ -261,8 +348,16 @@
 </head>
 <body>
 
+    <div id="slayy-text">SLAYYYYY</div>
+
     <div class="credits-banner">
         Created by Qusai Slatewala | Made From Slides of PES University
+    </div>
+
+    <div class="news-ticker-container" id="ib-ticker" style="display:none;">
+        <div class="news-ticker">
+            🌐 BREAKING: WTO Rules Against Hidden Tariffs 📈 Global Capability Centers in India Surge 40% 🌍 Slowbalization: Physical Trade Plateaus as Digital Trade Skyrockets 🚢 Container Costs Drop by 15% ⚖️ EU Enforces New ESG Supply Chain Laws! 🌐
+        </div>
     </div>
 
     <div id="mobile-menu-toggle" onclick="toggleMobileMenu()">☰ OPEN STUDY MENU</div>
@@ -280,6 +375,7 @@
                 <button id="btn-efm" class="subj-btn active" onclick="setSubject('efm')">EFM</button>
                 <button id="btn-hrm" class="subj-btn" onclick="setSubject('hrm')">HRM</button>
                 <button id="btn-fm" class="subj-btn" onclick="setSubject('fm')">FM</button>
+                <button id="btn-ib" class="subj-btn" onclick="setSubject('ib')">IB</button>
             </div>
 
             <div class="quick-settings">
@@ -386,11 +482,37 @@
 
                 <div class="unit-title" style="color: #fff;">Exam Prep & Tools</div>
                 <button class="nav-btn" onclick="showSection(event, 'fm-formula-sheet')" style="color: #fff; border-bottom: 1px solid #fff; font-weight:bold;">8. ULTIMATE PROBLEM SOLVER 🧮</button>
+                <button class="nav-btn" id="nav-btn-sums" onclick="showSection(event, 'fm-sums-sheet')" style="color: #00ff9d; border-bottom: 1px solid #00ff9d; font-weight:bold;">8.5 EXAM SUMS & SOLUTIONS 💯</button>
                 <button class="nav-btn" onclick="showSection(event, 'study-tools')" style="color: #fff; border-bottom: 1px solid #fff;">9. Scratchpad & Checklist 📝</button>
                 <button class="nav-btn" onclick="showSection(event, 'fm-tools')" style="color: #fbbf24; border-bottom: 1px solid #fbbf24; font-weight:bold; text-shadow: 0 0 10px #fbbf24;">10. FM Power Suite (15 Tools) 📈</button>
                 
                 <div class="unit-title" style="color: #ff4655;">Ultimate Arcade</div>
                 <button class="nav-btn" onclick="showSection(event, 'fm-arcade')" style="color: #ff4655; border-bottom: 1px solid #ff4655; text-shadow: 0 0 10px #ff4655;">🎮 Wall Street Arcade (12 Games)</button>
+            </div>
+
+            <div id="ib-sidebar-links" style="display:none;">
+                <div class="unit-title">Unit 1: Trade & Globalization</div>
+                <button class="nav-btn" onclick="showSection(event, 'ib-trade-theories')">1. Trade Concepts & Theories</button>
+                <button class="nav-btn" onclick="showSection(event, 'ib-porter')">2. Porter's Diamond & New Trade</button>
+                <button class="nav-btn" onclick="showSection(event, 'ib-iplc')">3. Int. Product Life Cycle (IPLC)</button>
+                <button class="nav-btn" onclick="showSection(event, 'ib-internationalization')">4. Uppsala & Born Globals</button>
+                <button class="nav-btn" onclick="showSection(event, 'ib-globalization')">5. Globalization & Slowbalization</button>
+                <button class="nav-btn" onclick="showSection(event, 'ib-trade-policies')">6. WTO, Tariffs & NTBs</button>
+
+                <div class="unit-title">Unit 2: Global Environment</div>
+                <button class="nav-btn" onclick="showSection(event, 'ib-pestel')">7. PESTEL+ & Political Risk</button>
+                <button class="nav-btn" onclick="showSection(event, 'ib-culture-econ')">8. Economic Indicators & Culture</button>
+                <button class="nav-btn" onclick="showSection(event, 'ib-legal-inst')">9. Legal Systems & WTO/IMF</button>
+                <button class="nav-btn" onclick="showSection(event, 'ib-regional-integ')">10. Regional Integration (EU, RCEP)</button>
+
+                <div class="unit-title" style="color: #fff;">Exam Prep & Tools</div>
+                <button class="nav-btn" onclick="showSection(event, 'study-tools')" style="color: #fff; border-bottom: 1px solid #fff;">11. Scratchpad & Checklist 📝</button>
+                <button class="nav-btn" onclick="showSection(event, 'ib-holo-tutor')" style="color: #00ffcc; font-weight:bold;">12. AI Hologram Tutor 🤖</button>
+                <button class="nav-btn" onclick="showSection(event, 'ib-interactive-tools')" style="color: #00ffcc; border-bottom: 1px solid #00ffcc;">13. Porter & Entry Visualizer 🗺️</button>
+                <button class="nav-btn" onclick="showSection(event, 'ib-trade-maps')" style="color: #00ffcc; border-bottom: 1px solid #00ffcc;">14. Global Maps & Dashboards 📊</button>
+                
+                <div class="unit-title" style="color: #ff00ff;">Ultimate Arcade</div>
+                <button class="nav-btn" onclick="showSection(event, 'ib-arcade')" style="color: #ff00ff; border-bottom: 1px solid #ff00ff; text-shadow: 0 0 10px #ff00ff;">🎮 Global Arcade (Minigames)</button>
             </div>
 
             <div class="pomodoro-widget" style="margin: 10px;">
@@ -1215,7 +1337,8 @@
 
                         </div>
                     </div>
-                </div> ```
+
+                </div>
 <div id="hrm-sections-wrapper" style="display:none;">
                     
                     <div id="hrm-intro" class="section-container" data-title="Intro, Evolution & Objectives of HRM">
@@ -1774,6 +1897,7 @@
                             </table>
                         </div>
                     </div>
+                    
                     <div id="hrm-ai-tools" class="section-container" data-title="AI in Job Analysis (Textio)">
                         <div style="display:flex; justify-content:space-between; align-items:center;">
                             <span class="read-time">⏱️ Estimated Read: 4 mins</span>
@@ -2315,8 +2439,6 @@
                     </div>
 
                 </div>
-                ```
-
 <div id="fm-sections-wrapper" style="display:none;">
                     
                     <div id="fm-intro" class="section-container active" data-title="Intro & Objectives of FM">
@@ -2436,7 +2558,7 @@
                             </table>
                         </div>
                     </div>
-<div id="fm-costcap" class="section-container" data-title="Cost of Capital (WACC)">
+                    <div id="fm-costcap" class="section-container" data-title="Cost of Capital (WACC)">
                         <div style="display:flex; justify-content:space-between; align-items:center;">
                             <span class="read-time">⏱️ Estimated Read: 7 mins</span>
                             <button class="tts-btn" onclick="speakText(this.parentElement.parentElement)">🔊 Read Aloud</button>
@@ -2589,7 +2711,7 @@
                             </div>
                         </div>
                     </div>
-<div id="fm-sums-sheet" class="section-container" data-title="Ultimate Exam Sums Guide">
+                    <div id="fm-sums-sheet" class="section-container" data-title="Ultimate Exam Sums Guide">
                         <h1 class="cyber-title" style="color: #fbbf24; text-shadow: 0 0 15px #fbbf24;">Exam Sums & Solutions 💯</h1>
                         <p>A quick-glance guide with AT LEAST TWO solved examples for every single type of problem in the FM syllabus!</p>
 
@@ -2776,7 +2898,7 @@
                             </div>
                         </div>
                     </div>
-<div id="fm-tools" class="section-container" data-title="FM Power Suite">
+                    <div id="fm-tools" class="section-container" data-title="FM Power Suite">
                         <h1 class="cyber-title" style="color: #fbbf24; text-shadow: 0 0 15px #fbbf24;">FM Power Suite 📈</h1>
                         <p>15 highly interactive calculators to instantly solve Financial Management problems.</p>
                         
@@ -3016,6 +3138,613 @@
                     </div>
 
                 </div>
+<div id="ib-sections-wrapper" style="display:none;">
+                    
+                    <div id="ib-trade-theories" class="section-container active" data-title="Trade Concepts & Theories">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span class="read-time">⏱️ Estimated Read: 8 mins</span>
+                            <div>
+                                <button class="bookmark-btn" onclick="toggleBookmark(this, 'ib-trade-theories')">⭐</button>
+                                <button class="tts-btn" onclick="speakText(this.parentElement.parentElement)">🔊 Read Aloud</button>
+                            </div>
+                        </div>
+                        <h1 style="color:var(--primary); text-shadow: 0 0 10px var(--primary);">Foundations of International Trade</h1>
+                        
+                        <div class="card-grid">
+                            <div class="card" style="border-top: 5px solid var(--primary); background: rgba(0, 255, 204, 0.05);">
+                                <h4 style="color: var(--primary);">Intl. Business vs Global Business</h4>
+                                <p><strong>International Business:</strong> Encompasses all commercial activities that cross national boundaries. Often involves adapting products to local markets.</p>
+                                <p><strong>Global Business:</strong> A more integrated approach where a company treats the entire world as one single, borderless market (Standardization). Ex: Apple selling the exact same iPhone globally.</p>
+                            </div>
+                            <div class="card" style="border-top: 5px solid var(--secondary); background: rgba(255, 0, 255, 0.05);">
+                                <h4 style="color: var(--secondary);">Defining International Trade</h4>
+                                <p>The exchange of capital, goods, and services across international borders. It allows countries to expand markets and access goods not available domestically.</p>
+                                <ul>
+                                    <li><strong>Imports:</strong> Goods brought into a country.</li>
+                                    <li><strong>Exports:</strong> Goods sold to another country.</li>
+                                    <li><strong>Trade Balance:</strong> Value of exports minus imports.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h2 style="color:var(--accent);">Classical & Modern Theories of Trade</h2>
+                        
+                        <button class="accordion" style="border-color:var(--primary); color:var(--primary);">1. Mercantilism & Absolute Advantage</button>
+                        <div class="panel">
+                            <div class="panel-content">
+                                <p><strong>Mercantilism (16th-18th Century):</strong> An economic philosophy equating wealth with the accumulation of Gold & Silver. Believed in a <em>Zero-Sum Game</em> where maintaining a Trade Surplus (Exports > Imports) was mandatory. If one country gets richer, another must get poorer.</p>
+                                <p><strong>Absolute Advantage (Adam Smith, 1776):</strong> Destroyed the zero-sum logic. A country should exclusively produce and export goods it manufactures most efficiently (lowest absolute cost) and import what it produces inefficiently. Both countries win.</p>
+                            </div>
+                        </div>
+
+                        <button class="accordion" style="border-color:var(--primary); color:var(--primary);">2. Comparative Advantage & Heckscher-Ohlin</button>
+                        <div class="panel">
+                            <div class="panel-content">
+                                <p><strong>Comparative Advantage (David Ricardo):</strong> Focuses on <em>Opportunity Cost</em>. Even if Country A is better at making absolutely everything, it should still specialize in what it does <em>most</em> efficiently and let Country B make the rest.</p>
+                                <p><strong>Heckscher-Ohlin (Factor Proportions):</strong> Countries export products that utilize their <em>abundant and cheap factors of production</em> (Land, Labor, Capital). Example: India exports labor-intensive IT services; Germany exports capital-intensive automotive machinery.</p>
+                            </div>
+                        </div>
+
+                        <button class="accordion" style="border-color:var(--secondary); color:var(--secondary);">3. New Trade Theory (Paul Krugman)</button>
+                        <div class="panel">
+                            <div class="panel-content">
+                                <p>Emerged in the 1970s, challenging classical models by introducing two massive concepts:</p>
+                                <ul>
+                                    <li><strong>Economies of Scale:</strong> Trade allows a firm to produce a massive volume for the global market, driving down unit costs exponentially.</li>
+                                    <li><strong>First-Mover Advantage:</strong> The global market may only be able to support a few highly profitable firms (e.g., Commercial Aircraft - Boeing & Airbus). Countries that capture these industries first gain a massive economic moat.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <button class="accordion" style="border-color:var(--accent); color:var(--accent);">4. The Gravity Model of Trade</button>
+                        <div class="panel">
+                            <div class="panel-content">
+                                <p>Trade between two countries is directly proportional to their Economic Size (GDP) and inversely proportional to the physical/cultural Distance between them.</p>
+                                <div class="formula-text" style="color:var(--accent); border-color:var(--accent);">$$Trade = A \times \frac{GDP_1 \times GDP_2}{Distance}$$</div>
+                                <ul>
+                                    <li><strong>GDP (Economic Size):</strong> Direct relationship. Target high-income, large nations for exports.</li>
+                                    <li><strong>Distance (Friction):</strong> Inverse relationship. Includes Physical, Cultural, and Administrative distance.</li>
+                                    <li><strong>UAE Example (Low Friction):</strong> High trade with India despite smaller size due to low physical distance (3 hours), low cultural distance (diaspora), and the CEPA agreement reducing "Administrative Distance."</li>
+                                    <li><strong>China Example (High Friction):</strong> High GDP and zero physical distance, but political tensions create massive Administrative Friction, slowing the gravity effect.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="ib-porter" class="section-container" data-title="Porter's Diamond Model">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span class="read-time">⏱️ Estimated Read: 4 mins</span>
+                            <button class="tts-btn" onclick="speakText(this.parentElement.parentElement)">🔊 Read Aloud</button>
+                        </div>
+                        <h1 style="color:var(--secondary); text-shadow: 0 0 10px var(--secondary);">Porter's National Diamond</h1>
+                        <p>Michael Porter theorized why specific nations become the global hub for certain industries (e.g., Japan for cars, Switzerland for robotics). It depends on four interconnected attributes:</p>
+
+                        <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--secondary); border-radius: 10px; padding: 20px; text-align: center; margin: 20px 0;">
+                            <svg class="porter-svg" viewBox="0 0 400 400" id="porter-interactive">
+                                <polygon points="200,20 280,100 200,180 120,100" class="porter-poly" onclick="document.getElementById('porter-desc').innerHTML='<b>Firm Strategy, Structure & Rivalry:</b> How companies are created, organized, and managed. High domestic rivalry forces innovation (e.g., Japanese automakers fighting each other makes them globally dominant).'"/>
+                                <text x="200" y="105" class="porter-text">Firm Strategy</text>
+                                
+                                <polygon points="20,200 100,120 180,200 100,280" class="porter-poly" onclick="document.getElementById('porter-desc').innerHTML='<b>Factor Endowments:</b> A nation’s position in factors of production (skilled labor, infrastructure). Porter argues that <i>created</i> factors (advanced education) are more important than <i>basic</i> factors (natural resources).'"/>
+                                <text x="100" y="205" class="porter-text">Factors</text>
+                                
+                                <polygon points="380,200 300,120 220,200 300,280" class="porter-poly" onclick="document.getElementById('porter-desc').innerHTML='<b>Demand Conditions:</b> The nature of home-market demand. Sophisticated and demanding local customers pressure firms to innovate and achieve high quality early.'"/>
+                                <text x="300" y="205" class="porter-text">Demand</text>
+                                
+                                <polygon points="200,380 280,300 200,220 120,300" class="porter-poly" onclick="document.getElementById('porter-desc').innerHTML='<b>Related & Supporting Industries:</b> The presence of internationally competitive supplier industries. Clustered industries benefit from shared R&D and rapid component delivery.'"/>
+                                <text x="200" y="305" class="porter-text">Suppliers</text>
+
+                                <line x1="180" y1="180" x2="220" y2="220" stroke="var(--primary)" stroke-dasharray="5"/>
+                                <line x1="220" y1="180" x2="180" y2="220" stroke="var(--primary)" stroke-dasharray="5"/>
+                            </svg>
+                            <div id="porter-desc" style="min-height: 80px; padding: 15px; border: 1px dashed var(--primary); background: #000; border-radius: 5px; color: var(--primary);">
+                                Click a node on the Diamond to reveal the theory details!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="ib-iplc" class="section-container" data-title="International Product Life Cycle">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span class="read-time">⏱️ Estimated Read: 4 mins</span>
+                            <button class="tts-btn" onclick="speakText(this.parentElement.parentElement)">🔊 Read Aloud</button>
+                        </div>
+                        <h1 style="color:var(--accent);">International Product Life Cycle (IPLC)</h1>
+                        <p>Developed by Raymond Vernon, this model explains how a product's trade patterns and production locations change as it matures.</p>
+
+                        <div class="process-tracker">
+                            <div class="process-step" style="border-bottom: 3px solid var(--primary);">Stage 1: Intro (Innovation)</div>
+                            <div class="process-step" style="border-bottom: 3px solid var(--secondary);">Stage 2: Growth (Export)</div>
+                            <div class="process-step" style="border-bottom: 3px solid var(--accent);">Stage 3: Standardized (Commodity)</div>
+                        </div>
+
+                        <div class="card-grid">
+                            <div class="card">
+                                <h4 style="color:var(--primary);">Stage 1: New Product</h4>
+                                <ul>
+                                    <li><strong>Production Location:</strong> Shifts entirely to the home country (innovator nation, e.g., USA).</li>
+                                    <li><strong>Focus:</strong> R&D intensive. Product is highly unstandardized.</li>
+                                    <li><strong>Market:</strong> Wealthy domestic consumers. Price is not an issue.</li>
+                                </ul>
+                            </div>
+                            <div class="card">
+                                <h4 style="color:var(--secondary);">Stage 2: Maturing Product</h4>
+                                <ul>
+                                    <li><strong>Production Location:</strong> Demand grows in other wealthy nations (EU, Japan). To save on transport and tariffs, the firm sets up local production in those advanced nations.</li>
+                                    <li><strong>Trade Pattern:</strong> The home country becomes a major exporter to other developed nations.</li>
+                                    <li><strong>Quants:</strong> Growth Rate (g) > 10% annually. <em>Learning Curve Effect:</em> Unit costs drop by 20% for every doubling of cumulative volume.</li>
+                                </ul>
+                            </div>
+                            <div class="card">
+                                <h4 style="color:var(--accent);">Stage 3: Standardized</h4>
+                                <ul>
+                                    <li><strong>Production Location:</strong> Shifts to developing nations (India, Vietnam).</li>
+                                    <li><strong>Reasoning:</strong> The product is now a "commodity." Competition is purely price-based, not innovation-based. Low labor costs dictate location.</li>
+                                    <li><strong>Labor Arbitrage:</strong> Moving production to exploit lower wages ($20/hr in US vs $3/hr in India).</li>
+                                    <li><strong>Trade Pattern:</strong> <em>The home country becomes a net importer of its own invention.</em> Market share growth slows to 0-2%.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="ib-internationalization" class="section-container" data-title="Uppsala Model & Born Globals">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span class="read-time">⏱️ Estimated Read: 3 mins</span>
+                            <button class="tts-btn" onclick="speakText(this.parentElement.parentElement)">🔊 Read Aloud</button>
+                        </div>
+                        <h1>Internationalization Process Models</h1>
+
+                        <div class="card-grid">
+                            <div class="card" style="border-left: 5px solid var(--primary);">
+                                <h4 style="color:var(--primary);">The Uppsala Model</h4>
+                                <p><strong>Core Philosophy: "Learning by Doing"</strong></p>
+                                <p>Companies do not jump into high-risk markets immediately because they suffer from a "Lack of Market Knowledge." To reduce risk, they expand in small, manageable steps, gaining "experiential knowledge" at each stage.</p>
+                                <ul>
+                                    <li><strong>Logic:</strong> Knowledge reduces uncertainty -> Reduced risk encourages higher market commitment.</li>
+                                    <li><strong>Psychic Distance:</strong> Factors (language, culture, legal systems, business practices) that make a market feel "far." Firms usually start in countries with low psychic distance (e.g., US companies expanding to Canada first).</li>
+                                </ul>
+                            </div>
+                            <div class="card" style="border-left: 5px solid var(--secondary);">
+                                <h4 style="color:var(--secondary);">Born Globals</h4>
+                                <p><strong>Core Philosophy: "Instant Scale"</strong></p>
+                                <p>Firms that seek to derive significant competitive advantage from the use of resources and the sale of outputs in multiple countries <em>from inception</em>.</p>
+                                <ul>
+                                    <li>They skip the slow stages of the Uppsala model entirely.</li>
+                                    <li><strong>Drivers:</strong> The Internet, borderless software, specialized niche markets, and founders with a global mindset. Example: Tech startups like Spotify or SaaS platforms.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="ib-globalization" class="section-container" data-title="Globalization vs De-globalization">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span class="read-time">⏱️ Estimated Read: 6 mins</span>
+                            <button class="tts-btn" onclick="speakText(this.parentElement.parentElement)">🔊 Read Aloud</button>
+                        </div>
+                        <h1 style="color:var(--primary);">Globalization & Slowbalization</h1>
+                        <p><strong>Globalization</strong> is the increasing integration and interdependence of national economies.</p>
+                        
+                        <div class="highlight-box">
+                            <strong>Drivers of Globalization:</strong><br>
+                            1. <strong>Technology & Transport:</strong> Containerization dropped shipping costs massively.<br>
+                            2. <strong>Trade Liberalization:</strong> WTO removing tariff barriers.<br>
+                            3. <strong>Global Competition:</strong> Survival of the fittest. If Indian brands (Zomato, Ola) don't build "Global Scale," foreign giants will squeeze them locally.<br>
+                            4. <strong>Cultural Soft Power:</strong> Brand India via Yoga/Bollywood creates cultural familiarity, aiding market entry.
+                        </div>
+
+                        <div class="card-grid">
+                            <div class="card" style="border-color: #00ffcc;">
+                                <h4 style="color:#00ffcc;">Advantages of Globalization</h4>
+                                <ol>
+                                    <li>Increased Economic Growth.</li>
+                                    <li>Cultural Exchange & communication.</li>
+                                    <li>Expanded Job Opportunities (BPOs, GCCs).</li>
+                                    <li>Greater Competition (lower prices).</li>
+                                    <li>Improved Technology transfer.</li>
+                                    <li>Improved Access to diverse goods.</li>
+                                </ol>
+                            </div>
+                            <div class="card" style="border-color: #ff00ff;">
+                                <h4 style="color:#ff00ff;">Disadvantages of Globalization</h4>
+                                <ol>
+                                    <li>Increased Income Inequality.</li>
+                                    <li>Cultural Homogenization (loss of local identity).</li>
+                                    <li>Loss of Jobs in high-cost domestic markets.</li>
+                                    <li>Environmental Degradation (global shipping emissions).</li>
+                                    <li>Loss of National Sovereignty to MNCs.</li>
+                                    <li>Unstable Global Markets (contagion effect of crises).</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <button class="accordion">Globalization 4.0 & Slowbalization</button>
+                        <div class="panel">
+                            <div class="panel-content">
+                                <p>Globalization is not dying; it is undergoing a "phase shift." Physical goods trade has plateaued (<strong>Slowbalization</strong>). However, trade in <strong>Digital Services</strong> is growing exponentially.</p>
+                                <p><strong>Structural Shift:</strong> Moving from Tangible (shipping containers) to Intangible (data packets). Software, AI models, and professional services are the new commodities.</p>
+                                <p><strong>Global Capability Centers (GCCs):</strong> India is the undisputed leader here, handling complex R&D and data analysis for global MNCs, shifting from basic call centers to high-end engineering.</p>
+                            </div>
+                        </div>
+
+                        <button class="accordion">Barriers to De-globalization (Why we can't easily "Go Back")</button>
+                        <div class="panel">
+                            <div class="panel-content">
+                                <div class="table-responsive">
+                                    <table>
+                                        <tr>
+                                            <th>Barrier Type</th>
+                                            <th>De-globalization Barrier (The "Anchor")</th>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Financial</strong></td>
+                                            <td>Enormous cost of building new domestic factories. Moving production from low-cost Vietnam back to Germany leads to severe inflation.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Political/Legal</strong></td>
+                                            <td>Existing WTO and FTA treaties are legally binding anchors. MNC lobbying fights protectionist laws.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Logistics</strong></td>
+                                            <td>Lack of skilled domestic labor for specific manufacturing tasks.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Consumer</strong></td>
+                                            <td>Demand for cheap, varied global products remains high.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Digital Paradox</strong></td>
+                                            <td>Data is borderless. Software and financial services flow instantly, making it impossible to isolate a modern economy.</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="ib-trade-policies" class="section-container" data-title="Trade Policies WTO Tariffs NTBs">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span class="read-time">⏱️ Estimated Read: 5 mins</span>
+                            <button class="tts-btn" onclick="speakText(this.parentElement.parentElement)">🔊 Read Aloud</button>
+                        </div>
+                        <h1>Trade Policies & Barriers</h1>
+
+                        <div class="card-grid">
+                            <div class="card" style="border-top: 5px solid var(--primary);">
+                                <h4 style="color:var(--primary);">WTO Commitments</h4>
+                                <p>Act as "speed limits" for trade policy to ensure predictability and stable environments for long-term investments.</p>
+                                <ul>
+                                    <li><strong>Single Undertaking:</strong> Members must accept all WTO agreements; you cannot cherry-pick.</li>
+                                    <li><strong>MFN (Most-Favored-Nation):</strong> You cannot discriminate between trading partners. A favor granted to one must be granted to all WTO members.</li>
+                                    <li><strong>National Treatment:</strong> Once a foreign product enters your domestic market, it must be treated exactly the same as a locally produced good.</li>
+                                    <li><strong>Reciprocity:</strong> Mutual lowering of barriers.</li>
+                                </ul>
+                            </div>
+                            <div class="card" style="border-top: 5px solid var(--accent);">
+                                <h4 style="color:var(--accent);">Ethical & Sustainable Trade</h4>
+                                <p>Moving away from pure "lowest unit cost" (20th Century) to "lowest carbon footprint" (2026 onwards).</p>
+                                <ul>
+                                    <li><strong>Sourcing Strategy:</strong> Shifting from global "wherever is cheapest" to "Friend-shoring" and "Near-shoring" (shorter distances).</li>
+                                    <li><strong>Transparency:</strong> Shifting from minimal proprietary data to radical Blockchain traceability.</li>
+                                    <li><strong>Examples:</strong> Patagonia's Worn Wear (second-hand revenue); Levi's Water&lt;Less (reduces water use by 96%); Tata Power expanding rooftop solar to reduce manufacturing carbon intensity.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3>Trade Barriers</h3>
+                        <ul>
+                            <li><strong>Tariffs (Taxes):</strong> 
+                                <ul>
+                                    <li><em>Ad Valorem:</em> A percentage of the item's value.</li>
+                                    <li><em>Specific:</em> A fixed monetary amount per physical unit.</li>
+                                    <li><em>Compound:</em> A mix of both.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Tariff Escalation:</strong> High tariffs on finished goods but low/zero tariffs on raw materials. This prevents developing nations from industrializing (e.g., Africa gets stuck exporting cheap raw cocoa instead of profitable processed chocolate).</li>
+                            <li><strong>Non-Tariff Barriers (NTBs):</strong>
+                                <ul>
+                                    <li><strong>SPS (Sanitary & Phytosanitary):</strong> Health/safety rules. Often used as hidden protectionism (e.g., rejecting fruit citing arbitrary 'pests').</li>
+                                    <li><strong>TBT (Technical Barriers to Trade):</strong> Arbitrary packaging, labeling, and product standards.</li>
+                                    <li><strong>Quotas:</strong> Direct limit on the physical quantity of an import.</li>
+                                    <li><strong>Local Content Requirements:</strong> Demanding a certain percentage of the product be made using local parts/labor to protect domestic jobs.</li>
+                                    <li><strong>VERs (Voluntary Export Restraints):</strong> Exporting country "voluntarily" limits exports under threat of much worse tariffs from the importing nation.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="ib-pestel" class="section-container" data-title="PESTEL+ & Political Risk">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span class="read-time">⏱️ Estimated Read: 4 mins</span>
+                            <button class="tts-btn" onclick="speakText(this.parentElement.parentElement)">🔊 Read Aloud</button>
+                        </div>
+                        <h1>PESTEL+ Environment & Political Risk</h1>
+                        <p>Global strategy requires analyzing external dimensions: Political (Sovereignty), Economic (Currency), Social (Culture), Technological (Data), Environmental (Climate), Legal (IP Rights). Plus <strong>Ethical</strong> and <strong>Geopolitical</strong> dimensions.</p>
+
+                        <button class="accordion" style="border-color:var(--secondary); color:var(--secondary);">Political Risk Analysis</button>
+                        <div class="panel">
+                            <div class="panel-content">
+                                <p><strong>Macrorisk:</strong> Affects ALL foreign enterprises in a country identically (e.g., a total government regime change, civil war, or a blanket nationalization policy like seizing all foreign assets).</p>
+                                <p><strong>Microrisk:</strong> Affects only specific sectors or specific firms (e.g., environmental protests stopping a specific foreign mining company, while foreign tech companies operate normally).</p>
+                            </div>
+                        </div>
+
+                        <div class="card-grid">
+                            <div class="card">
+                                <h4>Kobrin Index</h4>
+                                <p>Evaluates political vulnerability based on qualitative variables like regime stability, social unrest, institutional strength, and open government.</p>
+                            </div>
+                            <div class="card">
+                                <h4>PRS (Political Risk Services)</h4>
+                                <p>Commercial quantitative models predicting the safety of long-term investments based on aggregate risk scores.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="ib-culture-econ" class="section-container" data-title="Culture & Economic Indicators">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span class="read-time">⏱️ Estimated Read: 5 mins</span>
+                            <button class="tts-btn" onclick="speakText(this.parentElement.parentElement)">🔊 Read Aloud</button>
+                        </div>
+                        <h1 style="color:var(--accent);">Global Economic Indicators & Culture</h1>
+
+                        <button class="accordion" style="border-color:var(--accent); color:var(--accent);">GNI, GNP, GDP & PPP</button>
+                        <div class="panel">
+                            <div class="panel-content">
+                                <ul>
+                                    <li><strong>GDP (Gross Domestic Product):</strong> Value of all goods/services produced <em>within</em> a country's borders, regardless of who owns the factories.</li>
+                                    <li><strong>GNP (Gross National Product):</strong> Value of all goods/services produced by a country's <em>citizens/corporations</em>, regardless of where in the world they are located.</li>
+                                    <li><strong>GNI (Gross National Income):</strong> Similar to GNP, it's the total domestic and foreign output claimed by residents of a country. A major indicator of a market's purchasing power.</li>
+                                    <li><strong>PPP (Purchasing Power Parity):</strong> Adjusts GNI to reflect the actual cost of living. Allows for a realistic comparison of living standards across nations.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3 style="text-align: center; color: var(--primary); margin-top: 30px;">The "Triple Impact" Cycle</h3>
+                        <p style="text-align: center; font-size: 0.9rem;">In the 2026 economic environment, indicators trigger each other.</p>
+                        
+                        <div class="econ-wheel-container">
+                            <div class="econ-node n1">1. Inflation<br>Rises</div>
+                            <div class="econ-node n2">2. Interest<br>Rates Hiked</div>
+                            <div class="econ-node n3">3. Currency<br>Strengthens</div>
+                            <div class="econ-node n4">4. GNI Growth<br>Slows</div>
+                        </div>
+                        <p style="text-align:center; font-size:0.85rem; color:#aaa; margin-top: 40px;">
+                            <em>Logic:</em> Central Banks hike Interest Rates to stop inflation -> High rates attract "Hot Money" -> Drives up currency demand -> Strong currency makes exports expensive -> GNI slows down.
+                        </p>
+
+                        <hr style="border:1px solid #333; margin: 30px 0;">
+
+                        <div class="card-grid">
+                            <div class="card" style="border-color: var(--secondary);">
+                                <h4 style="color:var(--secondary);">Cultural Impact</h4>
+                                <p>Culture dictates market entry, product adaptation, and negotiations.</p>
+                                <ul>
+                                    <li><strong>Ethnocentrism:</strong> The belief that one's own culture is inherently superior. A major cause of international business blunders and misinterpretations.</li>
+                                    <li><strong>Cultural Intelligence (CQ):</strong> The ability to navigate and adapt to different cultural contexts. High CQ leaders adjust management styles to fit local team preferences.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="ib-legal-inst" class="section-container" data-title="Legal Systems & Institutional Framework">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span class="read-time">⏱️ Estimated Read: 5 mins</span>
+                            <button class="tts-btn" onclick="speakText(this.parentElement.parentElement)">🔊 Read Aloud</button>
+                        </div>
+                        <h1>Legal Systems & Global Institutions</h1>
+
+                        <h3>The Three Major National Legal Systems</h3>
+                        <ul>
+                            <li><strong>Common Law:</strong> Based on tradition, precedent, and custom (e.g., USA, UK, India). High flexibility; contracts are very long and detailed because contingencies must be explicitly spelled out.</li>
+                            <li><strong>Civil Law:</strong> Based on a very detailed set of written laws and codes (e.g., Germany, France). Less flexible; contracts are shorter because codes already cover most standard issues.</li>
+                            <li><strong>Theocratic Law:</strong> Based on religious teachings (e.g., Islamic law, which prohibits interest/Riba).</li>
+                        </ul>
+                        
+                        <p><strong>IPRI (International IP Rights Index):</strong> Measures how well physical and intellectual property is protected. Critical for R&D-heavy industries (tech, pharma) when deciding where to expand.</p>
+
+                        <button class="accordion">Motivations to "Go Global" via Legal Environments</button>
+                        <div class="panel">
+                            <div class="panel-content">
+                                <ul>
+                                    <li><strong>Arbitrage & Regulation Seeking:</strong> Moving to countries with favorable tax laws (e.g., tech firms in Ireland) or less stringent labor regulations to reduce costs.</li>
+                                    <li><strong>Access to Treaties:</strong> Joining a Free Trade Area (USMCA, EU) motivates firms to set up HQs there to access millions of customers without tariffs.</li>
+                                    <li><strong>Asset Protection:</strong> Moving assets to countries with stronger property rights to protect wealth from political instability at home.</li>
+                                    <li><strong>Standardization:</strong> Adoption of global standards (ISO, IFRS) makes it cheaper to operate in 50 countries as if they were one.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <button class="accordion">Global Institutional Framework</button>
+                        <div class="panel">
+                            <div class="panel-content">
+                                <p>Strategy is constrained and enabled by Formal Institutions (laws, orgs) and Informal Institutions (norms).</p>
+                                <ul>
+                                    <li><strong>WTO (World Trade Organization):</strong> Only global intl. organization dealing with trade rules. Forum for negotiation and dispute resolution.</li>
+                                    <li><strong>IMF (International Monetary Fund):</strong> Maintains order in the international monetary system. Lender of last resort for nations facing balance of payment crises (Bailouts).</li>
+                                    <li><strong>World Bank:</strong> Promotes general economic development, primarily funding infrastructure projects in developing nations.</li>
+                                    <li><strong>WIPO (World Intellectual Property Org):</strong> UN agency that protects IP globally (patents, trademarks).</li>
+                                    <li><strong>OECD:</strong> Organization for Economic Co-operation and Development. Drives policies that improve economic and social well-being globally.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="ib-regional-integ" class="section-container" data-title="Regional Integration & Strategy">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span class="read-time">⏱️ Estimated Read: 4 mins</span>
+                            <button class="tts-btn" onclick="speakText(this.parentElement.parentElement)">🔊 Read Aloud</button>
+                        </div>
+                        <h1>Regional Integration & MNC Strategy</h1>
+                        <p>Nations form regional blocs to reduce trade barriers and increase market size. Impact: MNCs shift from "Global" value chains to "Regional" value chains to take advantage of Rules of Origin (RoO) benefits.</p>
+
+                        <div class="table-responsive">
+                            <table>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>EU (European Union)</th>
+                                    <th>RCEP (Asia-Pacific)</th>
+                                    <th>MERCOSUR (South America)</th>
+                                    <th>AfCFTA (Africa)</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>Primary Goal</strong></td>
+                                    <td>Political & Economic Unity</td>
+                                    <td>Trade Liberalization</td>
+                                    <td>Regional Protection</td>
+                                    <td>Development & Industrialization</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Key Strength</strong></td>
+                                    <td>Unified Regulatory Power</td>
+                                    <td>Supply Chain Efficiency</td>
+                                    <td>Raw Material Resources</td>
+                                    <td>Future Market Growth</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Main Challenge</strong></td>
+                                    <td>Security & Energy Stability</td>
+                                    <td>Geopolitical Tensions</td>
+                                    <td>Internal Political Divergence</td>
+                                    <td>Infrastructure Deficits</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Strategic Focus</strong></td>
+                                    <td>ESG & Carbon Neutrality</td>
+                                    <td>E-commerce & Tech</td>
+                                    <td>Global Integration (EU Deal)</td>
+                                    <td>Digital & Youth Protocols</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div class="highlight-box">
+                            <strong>Impact on Global Strategy for MNCs:</strong><br>
+                            1. <strong>Supply Chain Regionalization:</strong> Firms shift to regional value chains to gain RCEP/AfCFTA benefits.<br>
+                            2. <strong>Regulatory Compliance:</strong> EU's sustainability laws (Deforestation Regulation) now affect how MERCOSUR farmers operate.<br>
+                            3. <strong>Investment Diversification:</strong> MNCs use MERCOSUR as a gateway to both SA and Europe due to new treaties.
+                        </div>
+                    </div>
+
+                    <div id="ib-holo-tutor" class="section-container" data-title="AI Hologram Tutor">
+                        <h1 class="cyber-title" style="color:var(--primary);">Holographic AI Syllabus Tutor 🤖</h1>
+                        <p>Ask the hologram to explain complex concepts instantly!</p>
+                        
+                        <div class="holo-tutor">
+                            <h3 style="color:var(--secondary); border-bottom:1px solid rgba(255,0,255,0.3);">IB-GPT Interface Online</h3>
+                            <div id="holo-chat-box" style="height: 150px; overflow-y: auto; color: #fff; margin-bottom: 15px; font-family: monospace; text-shadow: 0 0 5px var(--primary); padding: 10px; background: rgba(0,0,0,0.4); border-radius: 5px;">
+                                [System]: Awaiting query...
+                            </div>
+                            <div style="display:flex; flex-wrap:wrap;">
+                                <button class="holo-btn" onclick="typeHoloText('Comparative Advantage means specializing in what you do most efficiently, even if you are better at everything, because of Opportunity Costs.')">Explain Comparative Adv</button>
+                                <button class="holo-btn" onclick="typeHoloText('The Gravity Model states Trade = (GDP1 * GDP2) / Distance. Bigger economies trade more, further economies trade less. Treaties reduce distance friction.')">What is the Gravity Model?</button>
+                                <button class="holo-btn" onclick="typeHoloText('Tariff Escalation is placing low taxes on raw materials and high taxes on finished goods, preventing poor nations from industrializing.')">Define Tariff Escalation</button>
+                                <button class="holo-btn" onclick="typeHoloText('Born Globals skip the slow Uppsala steps. They utilize internet and tech to sell globally from day one, aiming for instant scale.')">Uppsala vs Born Global</button>
+                                <button class="holo-btn" onclick="typeHoloText('In Stage 3 (Standardized), the product is a commodity. Competition is based on price. Production shifts to developing nations due to Labor Arbitrage ($20/hr vs $3/hr).')">Explain IPLC Stage 3</button>
+                                <button class="holo-btn" onclick="typeHoloText('GNI is Gross National Income. It includes total domestic and foreign output claimed by residents. PPP adjusts this to reflect actual cost of living.')">GNI vs PPP?</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="ib-interactive-tools" class="section-container" data-title="Interactive Map & PESTEL">
+                        <h1 class="cyber-title" style="color:var(--secondary);">Interactive PESTEL Dashboard 🧩</h1>
+
+                        <p>Drag the risk factors into their correct analytical buckets to test your environmental analysis skills!</p>
+                        <div style="display:flex; gap:10px; margin-bottom:15px; flex-wrap:wrap;" id="pestel-draggables">
+                            <div class="pestel-card" draggable="true" ondragstart="dragPestel(event)" id="p-risk1">Regime Change</div>
+                            <div class="pestel-card" draggable="true" ondragstart="dragPestel(event)" id="p-risk2">Inflation Spike</div>
+                            <div class="pestel-card" draggable="true" ondragstart="dragPestel(event)" id="p-risk3">Ethnocentrism</div>
+                            <div class="pestel-card" draggable="true" ondragstart="dragPestel(event)" id="p-risk4">Carbon Tax Laws</div>
+                            <div class="pestel-card" draggable="true" ondragstart="dragPestel(event)" id="p-risk5">Civil Law Dispute</div>
+                            <div class="pestel-card" draggable="true" ondragstart="dragPestel(event)" id="p-risk6">Cybersecurity Data Breach</div>
+                        </div>
+                        
+                        <div class="pestel-board">
+                            <div class="pestel-zone" ondragover="allowDropPestel(event)" ondrop="dropPestel(event)"><h4>Political</h4></div>
+                            <div class="pestel-zone" ondragover="allowDropPestel(event)" ondrop="dropPestel(event)"><h4>Economic</h4></div>
+                            <div class="pestel-zone" ondragover="allowDropPestel(event)" ondrop="dropPestel(event)"><h4>Social</h4></div>
+                            <div class="pestel-zone" ondragover="allowDropPestel(event)" ondrop="dropPestel(event)"><h4>Technological</h4></div>
+                            <div class="pestel-zone" ondragover="allowDropPestel(event)" ondrop="dropPestel(event)"><h4>Environmental</h4></div>
+                            <div class="pestel-zone" ondragover="allowDropPestel(event)" ondrop="dropPestel(event)"><h4>Legal</h4></div>
+                        </div>
+                        <button class="arcade-btn" style="margin-top:15px; width: 100%; border-color:var(--secondary); color:var(--secondary);" onclick="resetPestel()">Reset Board</button>
+                    </div>
+
+                    <div id="ib-trade-maps" class="section-container" data-title="Global Trade Visualizer">
+                        <h1 class="cyber-title" style="color:var(--accent);">Global Trade Route Visualizer 🗺️</h1>
+                        <p>Click a regional bloc to visualize its trade network and core strategy.</p>
+                        
+                        <div style="display:flex; gap:10px; justify-content:center;">
+                            <button class="arcade-btn" style="border-color: #00ffcc; color: #00ffcc;" onclick="drawTradeRoutes('EU')">EU</button>
+                            <button class="arcade-btn" style="border-color: #ff00ff; color: #ff00ff;" onclick="drawTradeRoutes('RCEP')">RCEP</button>
+                            <button class="arcade-btn" style="border-color: #ffff00; color: #ffff00;" onclick="drawTradeRoutes('MERCOSUR')">MERCOSUR</button>
+                            <button class="arcade-btn" style="border-color: #fff; color: #fff;" onclick="drawTradeRoutes('AfCFTA')">AfCFTA</button>
+                        </div>
+                        
+                        <svg class="svg-world-map" viewBox="0 0 600 300">
+                            <circle cx="300" cy="100" r="15" class="map-node" id="node-eu" title="Europe" />
+                            <text x="320" y="105" fill="#fff" font-size="10">EU</text>
+                            
+                            <circle cx="500" cy="150" r="15" class="map-node" id="node-asia" title="Asia" />
+                            <text x="520" y="155" fill="#fff" font-size="10">RCEP</text>
+                            
+                            <circle cx="150" cy="220" r="15" class="map-node" id="node-sa" title="South America" />
+                            <text x="170" y="225" fill="#fff" font-size="10">MERCOSUR</text>
+                            
+                            <circle cx="320" cy="180" r="15" class="map-node" id="node-af" title="Africa" />
+                            <text x="340" y="185" fill="#fff" font-size="10">AfCFTA</text>
+
+                            <circle cx="100" cy="80" r="15" class="map-node" id="node-na" title="North America" />
+                            <text x="120" y="85" fill="#fff" font-size="10">NAFTA</text>
+
+                            <g id="trade-lines"></g>
+                        </svg>
+                        <div id="map-stats" style="text-align:center; color:var(--accent); font-weight:bold; height:20px; margin-top: 10px;">Select a bloc to analyze...</div>
+                    </div>
+
+                    <div id="ib-arcade" class="section-container" data-title="IB Global Arcade">
+                        <h1 class="cyber-title" style="color:var(--secondary);">Global Arcade 🕹️</h1>
+                        <p>Relax and test your International Business knowledge.</p>
+                        <div class="arcade-grid">
+                            <div class="arcade-card" style="border-color: var(--primary);">
+                                <h3>1. IB Knowledge Quiz</h3>
+                                <p>Test your grasp on trade policies.</p>
+                                <button class="arcade-btn" onclick="document.getElementById('ib-quiz-box').style.display='block'; startQuiz('ib')">Launch Quiz</button>
+                            </div>
+                            <div class="arcade-card" onclick="flipArcadeCard(this)">
+                                <h3>2. Theory Flipper</h3>
+                                <p class="flash-text">Click: Who invented Absolute Adv?</p>
+                                <p class="flash-ans" style="display:none; color:var(--accent); font-weight:bold;">Adam Smith</p>
+                            </div>
+                            <div class="arcade-card">
+                                <h3>3. Gravity Calculator</h3>
+                                <p>If Distance doubles, Trade...</p>
+                                <button class="arcade-btn" onclick="this.innerHTML='Correct!'; this.style.background='var(--accent)'">Halves</button>
+                                <button class="arcade-btn" onclick="this.innerHTML='Wrong!'">Doubles</button>
+                            </div>
+                            <div class="arcade-card">
+                                <h3>4. Policy Matcher</h3>
+                                <p>Taxing finished goods high but raw materials low?</p>
+                                <button class="arcade-btn" onclick="this.innerHTML='Correct!'; this.style.background='var(--accent)'">Tariff Escalation</button>
+                                <button class="arcade-btn" onclick="this.innerHTML='Wrong!'">MFN</button>
+                            </div>
+                            
+                            <div class="quiz-container" id="ib-quiz-box" style="display:none; grid-column: 1 / -1; margin-top: 20px;">
+                                <div id="ib-start-screen">
+                                    <h2 style="border: none; color: var(--primary);">IB Global Hacker 🌍</h2>
+                                    <button class="quiz-btn start-btn" onclick="startQuiz('ib')">START QUIZ</button>
+                                </div>
+                                <div id="ib-question-screen" style="display: none;">
+                                    <h3 id="ib-question-text">Question goes here</h3>
+                                    <div class="options-grid" id="ib-options-box"></div>
+                                    <div id="ib-score-display" class="score-display"></div>
+                                </div>
+                                <div id="ib-end-screen" style="display: none;">
+                                    <h2>Simulation Complete!</h2>
+                                    <h3 id="ib-final-score" style="color: var(--primary); font-size: 2rem;"></h3>
+                                    <button class="quiz-btn" onclick="startQuiz('ib')" style="margin-top: 20px;">REBOOT SIMULATION</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 ```
 
                 <div id="study-tools" class="section-container" data-title="Scratchpad Tracker Notes">
@@ -3064,6 +3793,15 @@
                         </div>
                         <div class="checklist-item" onclick="toggleCheck(this, 'chk9')">
                             <input type="checkbox" id="chk9"><label>WACC & Leverage Formulas (FM)</label>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this, 'chk10')">
+                            <input type="checkbox" id="chk10"><label>Trade Theories, Porter's Diamond & IPLC (IB)</label>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this, 'chk11')">
+                            <input type="checkbox" id="chk11"><label>PESTEL+, Legal Systems & Economic Indicators (IB)</label>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this, 'chk12')">
+                            <input type="checkbox" id="chk12"><label>Regional Integration & WTO/IMF (IB)</label>
                         </div>
                     </div>
                 </div>
@@ -3230,10 +3968,12 @@
     <div onclick="spawnSticky()" title="Spawn a Floating Note" style="position:fixed; bottom:150px; right:30px; width:60px; height:60px; background:rgba(255,0,127,0.2); border:2px solid var(--secondary); border-radius:50%; display:flex; justify-content:center; align-items:center; cursor:pointer; box-shadow:0 0 15px var(--secondary); z-index:1000; font-size:1.5rem; backdrop-filter:blur(5px); transition:0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
         📝
     </div>
+    
     <div id="focus-widget" onclick="triggerFocusBoost()" title="Click for a Focus Surge!">
         <div class="sphere"></div>
         <div class="focus-label">FOCUS BOOSTER</div>
     </div>
+    
     <div id="motivate-widget" onclick="triggerMotivation()" title="Can't concentrate? Click me!">
         <span style="font-size: 2rem;">🆘</span>
         <div class="focus-label" style="color: #ff4655; text-shadow: none;">BRAIN FOG?</div>
@@ -3250,7 +3990,8 @@
         
         <button class="arcade-btn" style="margin-top: 50px; font-size: 1.2rem; padding: 15px 30px; border-color: var(--accent); color: var(--accent);" onclick="closeMotivation()">I'm Ready. Back to Grinding 🚀</button>
     </div>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
       window.MathJax = {
@@ -3271,22 +4012,28 @@
             if(formulaBtn) fmSidebar.insertBefore(sumsBtn, formulaBtn);
         }
 
-        // --- SUBJECT SWITCHER ---
+        // --- SUBJECT SWITCHER & IB LOGIC ---
         let currentSubject = 'efm';
         function setSubject(sub) {
             currentSubject = sub;
             document.querySelectorAll('.subj-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById('btn-' + sub).classList.add('active');
             
+            // Hide all sidebars and wrappers
             document.getElementById('efm-sidebar-links').style.display = 'none';
             document.getElementById('hrm-sidebar-links').style.display = 'none';
             if(document.getElementById('fm-sidebar-links')) document.getElementById('fm-sidebar-links').style.display = 'none';
+            if(document.getElementById('ib-sidebar-links')) document.getElementById('ib-sidebar-links').style.display = 'none';
             
             document.getElementById('efm-sections-wrapper').style.display = 'none';
             document.getElementById('hrm-sections-wrapper').style.display = 'none';
             if(document.getElementById('fm-sections-wrapper')) document.getElementById('fm-sections-wrapper').style.display = 'none';
+            if(document.getElementById('ib-sections-wrapper')) document.getElementById('ib-sections-wrapper').style.display = 'none';
             
-            document.body.classList.remove('hrm-theme', 'fm-theme');
+            document.body.classList.remove('hrm-theme', 'fm-theme', 'ib-theme');
+            
+            const ibTicker = document.getElementById('ib-ticker');
+            if(ibTicker) ibTicker.style.display = 'none';
 
             if(sub === 'efm') {
                 document.getElementById('efm-sidebar-links').style.display = 'block';
@@ -3305,6 +4052,13 @@
                 document.getElementById('module-title').innerHTML = 'FM Study Module <br><span class="exam-badge">🚀 Exam Mode ON</span>';
                 document.body.classList.add('fm-theme');
                 showSection(null, 'fm-intro'); 
+            } else if (sub === 'ib') {
+                document.getElementById('ib-sidebar-links').style.display = 'block';
+                document.getElementById('ib-sections-wrapper').style.display = 'block';
+                document.getElementById('module-title').innerHTML = 'IB Study Module <br><span class="exam-badge" style="border-color:#ff00ff; color:#00ffcc;">🌍 Global Mode</span>';
+                document.body.classList.add('ib-theme');
+                if(ibTicker) ibTicker.style.display = 'block';
+                showSection(null, 'ib-trade-theories'); 
             }
         }
 
@@ -3327,28 +4081,10 @@
             showToast(document.body.classList.contains('recall-mode') ? '🧠 Recall Mode ON (Hover to reveal)' : 'Recall Mode OFF');
         }
 
-       // --- 15 EPIC EASTER EGGS LOGIC ---
+        // --- EASTER EGGS LOGIC ---
         let secretBuffer = '';
         let fmClicks = 0;
         
-        // INJECT MISSING CSS FOR FOMO ANIMATION
-        if (!document.getElementById('fomo-styles')) {
-            const style = document.createElement('style');
-            style.id = 'fomo-styles';
-            style.innerHTML = `
-                @keyframes wobbleSide {
-                    0%, 100% { transform: translateX(0%); }
-                    15% { transform: translateX(-25px) rotate(-5deg); }
-                    30% { transform: translateX(20px) rotate(3deg); }
-                    45% { transform: translateX(-15px) rotate(-3deg); }
-                    60% { transform: translateX(10px) rotate(2deg); }
-                    75% { transform: translateX(-5px) rotate(-1deg); }
-                }
-            `;
-            document.head.appendChild(style);
-        }
-        
-        // 1. Click Egg
         function triggerHyperinflationEgg() {
             fmClicks++;
             if(fmClicks === 5) {
@@ -3364,33 +4100,41 @@
 
         document.addEventListener('keydown', (e) => {
             secretBuffer += e.key.toLowerCase();
-            // FIXED: Increased buffer from 25 to 100 to catch the massive Konami Code
             if (secretBuffer.length > 100) secretBuffer = secretBuffer.substring(1);
             
-            // 2. Hack Mode
+            // 🔥 BESTIE EASTER EGG (UPGRADED) 🔥
+            if (secretBuffer.includes('havi')) {
+                showToast("✨ SLAYY BESTIE ✨");
+                document.body.classList.add('slayy-mode');
+                const slayyText = document.getElementById('slayy-text');
+                if(slayyText) slayyText.classList.add('show-slayy');
+                
+                playSynthTone(400, 'sine', 0.5);
+                setTimeout(() => playSynthTone(600, 'triangle', 1), 500);
+                setTimeout(() => playSynthTone(800, 'square', 1), 1000);
+                
+                setTimeout(() => {
+                    document.body.classList.remove('slayy-mode');
+                    if(slayyText) slayyText.classList.remove('show-slayy');
+                }, 5000);
+                secretBuffer = '';
+            }
+
             if (secretBuffer.includes('hack')) { document.body.style.filter = document.body.style.filter === 'invert(1) hue-rotate(180deg)' ? 'none' : 'invert(1) hue-rotate(180deg)'; showToast("👾 HACKER MODE TOGGLED 👾"); secretBuffer = ''; }
-            
-            // 3. Stonks
             if (secretBuffer.includes('stonks')) { document.body.style.background = "linear-gradient(-45deg, #064e3b, #000, #064e3b)"; showToast("📈 STONKS ONLY GO UP 📈"); playSynthTone(600, 'square', 0.5); setTimeout(() => playSynthTone(800, 'square', 1), 500); secretBuffer = ''; }
 
-            // 4. Money Rain
             if (secretBuffer.includes('money')) {
                 showToast("💰 MONEY RAIN! 💰");
                 for(let i=0; i<30; i++) { let coin = document.createElement('div'); coin.innerText = "🪙"; coin.style.position = 'fixed'; coin.style.left = Math.random() * 100 + 'vw'; coin.style.top = '-50px'; coin.style.fontSize = '2rem'; coin.style.zIndex = '9999'; coin.style.transition = 'top 3s linear'; document.body.appendChild(coin); setTimeout(() => { coin.style.top = '120vh'; }, 50); setTimeout(() => { coin.remove(); }, 3050); }
                 secretBuffer = '';
             }
 
-            // 5. PESU Confetti (FIXED: Appends directly to body to ensure it is visible everywhere)
             if (secretBuffer.includes('pesu')) { 
                 showToast("🎓 GO PESU! 🎓"); 
                 for(let i=0; i<80; i++) { 
                     const conf = document.createElement('div'); 
-                    conf.style.position = 'fixed';
-                    conf.style.top = '-10px';
-                    conf.style.left = Math.random() * 100 + 'vw';
-                    conf.style.width = '10px';
-                    conf.style.height = '10px';
-                    conf.style.zIndex = '9999';
+                    conf.style.position = 'fixed'; conf.style.top = '-10px'; conf.style.left = Math.random() * 100 + 'vw';
+                    conf.style.width = '10px'; conf.style.height = '10px'; conf.style.zIndex = '9999';
                     conf.style.backgroundColor = ['#00f0ff', '#ff007f', '#00ff9d', '#f1c40f'][Math.floor(Math.random()*4)]; 
                     conf.style.transition = 'top ' + (Math.random() * 2 + 2) + 's linear, transform ' + (Math.random() * 2 + 2) + 's linear'; 
                     document.body.appendChild(conf); 
@@ -3400,7 +4144,6 @@
                 secretBuffer = ''; 
             }
 
-            // 6. Creator Code
             if (secretBuffer.includes('qusai')) {
                 showToast("📸 Welcome back, Creator! 📸");
                 document.body.style.background = "#fff"; setTimeout(() => document.body.style.background = "", 100);
@@ -3408,44 +4151,15 @@
                 secretBuffer = '';
             }
 
-            // 7. SMB Collections
             if (secretBuffer.includes('smb')) { showToast("🧦 SMB Collections 🧦"); let s = document.createElement('div'); s.innerText = "🧦"; s.style.cssText = 'position:fixed; top:50%; left:50%; font-size:10rem; transform:translate(-50%,-50%); z-index:9999; animation: bounceScale 1s;'; document.body.appendChild(s); setTimeout(()=>s.remove(), 1000); secretBuffer = ''; }
-
-            // 8. Saleh Traders
             if (secretBuffer.includes('saleh')) { showToast("🔨 Saleh Traders 🔨"); let h = document.createElement('div'); h.innerText = "🛠️"; h.style.cssText = 'position:fixed; top:50%; left:50%; font-size:10rem; transform:translate(-50%,-50%); z-index:9999; animation: bounceScale 1s;'; document.body.appendChild(h); setTimeout(()=>h.remove(), 1000); secretBuffer = ''; }
-
-            // 9. Bull
             if (secretBuffer.includes('bull')) { document.body.style.background = "#064e3b"; showToast("🐂 BULL MARKET ACTIVATED"); secretBuffer = ''; }
-            
-            // 10. Bear
             if (secretBuffer.includes('bear')) { document.body.style.background = "#451a03"; showToast("🐻 BEAR MARKET ACTIVATED"); secretBuffer = ''; }
-
-            // 11. FOMO (FIXED: Using injected keyframes)
-            if (secretBuffer.includes('fomo')) { 
-                showToast("🚀 BUY BUY BUY! 🚀"); 
-                document.body.style.animation = "wobbleSide 0.3s infinite"; 
-                setTimeout(()=>document.body.style.animation="", 2000); 
-                secretBuffer = ''; 
-            }
-
-            // 12. Diamond Hands (FIXED: Added giant visual)
-            if (secretBuffer.includes('diamond')) { 
-                showToast("💎🙌 HOLD THE LINE! 💎🙌"); 
-                let d = document.createElement('div'); 
-                d.innerText = "💎"; 
-                d.style.cssText = 'position:fixed; top:50%; left:50%; font-size:10rem; transform:translate(-50%,-50%); z-index:9999; animation: bounceScale 1s infinite alternate;'; 
-                document.body.appendChild(d); 
-                setTimeout(()=>d.remove(), 2500);
-                secretBuffer = ''; 
-            }
-
-            // 13. To the Moon
+            if (secretBuffer.includes('fomo')) { showToast("🚀 BUY BUY BUY! 🚀"); document.body.style.animation = "wobbleSide 0.3s infinite"; setTimeout(()=>document.body.style.animation="", 2000); secretBuffer = ''; }
+            if (secretBuffer.includes('diamond')) { showToast("💎🙌 HOLD THE LINE! 💎🙌"); let d = document.createElement('div'); d.innerText = "💎"; d.style.cssText = 'position:fixed; top:50%; left:50%; font-size:10rem; transform:translate(-50%,-50%); z-index:9999; animation: bounceScale 1s infinite alternate;'; document.body.appendChild(d); setTimeout(()=>d.remove(), 2500); secretBuffer = ''; }
             if (secretBuffer.includes('moon')) { showToast("🚀 TO THE MOON! 🌕"); let r = document.createElement('div'); r.innerText = "🚀"; r.style.cssText = 'position:fixed; bottom:0; left:50%; font-size:5rem; z-index:9999; transition: bottom 2s ease-in;'; document.body.appendChild(r); setTimeout(()=>r.style.bottom='120vh', 50); setTimeout(()=>r.remove(), 2000); secretBuffer = ''; }
-
-            // 14. Study Mode
             if (secretBuffer.includes('study')) { showToast("🎧 Deep Focus Engaged"); document.body.style.background = "#000"; document.querySelector('.matrix-bg').style.opacity = '0.02'; secretBuffer = ''; }
 
-            // 15. Konami Code (FIXED: Buffer size fixed, added green retro border)
             if (secretBuffer.includes('arrowuparrowuparrowdownarrowdownarrowleftarrowrightarrowleftarrowrightba')) {
                 showToast("🎮 KONAMI CODE: RETRO MODE! 🎮");
                 document.body.style.fontFamily = "'Courier New', Courier, monospace";
@@ -3521,7 +4235,7 @@
             else { div.classList.remove('checked'); localStorage.removeItem('efm_chk_' + id); }
         }
         document.addEventListener('DOMContentLoaded', () => {
-            for(let i=1; i<=9; i++) {
+            for(let i=1; i<=12; i++) {
                 let id = 'chk' + i;
                 if(localStorage.getItem('efm_chk_' + id)) { let cb = document.getElementById(id); if(cb) { cb.checked = true; cb.parentElement.classList.add('checked'); } }
             }
@@ -3546,6 +4260,8 @@
 
         // --- EXAM COUNTDOWN ---
         const fmExamDate = new Date("March 5, 2026 13:10:00").getTime();
+        const ibExamDate = new Date("March 6, 2026 13:10:00").getTime();
+        
         setInterval(() => {
             if (currentSubject === 'efm' || currentSubject === 'hrm') {
                 document.getElementById('exam-countdown').innerText = "PRACTICING 📊";
@@ -3563,6 +4279,19 @@
                     document.getElementById('exam-countdown').innerText = `${h}h ${m}m ${s}s left`;
                     document.getElementById('exam-countdown').style.color = "var(--accent)"; 
                     document.getElementById('exam-countdown').style.textShadow = "0 0 10px var(--accent)";
+                }
+            } else if (currentSubject === 'ib') {
+                const now = new Date().getTime(); const distance = ibExamDate - now;
+                if (distance < 0) { 
+                    document.getElementById('exam-countdown').innerText = "EXAM STARTED 🏁"; 
+                    document.getElementById('exam-countdown').style.color = "var(--primary)"; 
+                } else {
+                    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); 
+                    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); 
+                    const s = Math.floor((distance % (1000 * 60)) / 1000);
+                    document.getElementById('exam-countdown').innerText = `${h}h ${m}m ${s}s left`;
+                    document.getElementById('exam-countdown').style.color = "var(--primary)"; 
+                    document.getElementById('exam-countdown').style.textShadow = "0 0 10px var(--primary)";
                 }
             }
         }, 1000);
@@ -3685,8 +4414,22 @@
         // --- POMODORO TIMER ---
         let pomoInterval; let pomoTime = 1500; 
         function updatePomoDisplay() { let m = Math.floor(pomoTime / 60); let s = pomoTime % 60; document.getElementById('pomo-display').innerText = `${m<10?'0':''}${m}:${s<10?'0':''}${s}`; }
-        function startPomodoro() { clearInterval(pomoInterval); pomoInterval = setInterval(() => { if(pomoTime > 0) { pomoTime--; updatePomoDisplay(); } else { clearInterval(pomoInterval); alert("Study Session Complete! Take a break."); } }, 1000); }
-        function resetPomodoro() { clearInterval(pomoInterval); pomoTime = 1500; updatePomoDisplay(); }
+        function startPomodoro() { 
+            clearInterval(pomoInterval); 
+            pomoInterval = setInterval(() => { if(pomoTime > 0) { pomoTime--; updatePomoDisplay(); } else { clearInterval(pomoInterval); alert("Study Session Complete! Take a break."); document.body.classList.remove('hyperspace-active'); } }, 1000); 
+            
+            // HYPERSPACE OVERRIDE FOR IB THEME
+            if(currentSubject === 'ib') {
+                document.body.classList.add('hyperspace-active');
+                showToast("🚀 HYPERSPACE FOCUS ENGAGED!");
+            }
+        }
+        function resetPomodoro() { 
+            clearInterval(pomoInterval); 
+            pomoTime = 1500; 
+            updatePomoDisplay(); 
+            document.body.classList.remove('hyperspace-active');
+        }
 
         // --- AUDIO & AMBIENT ---
         let audioCtx = null;
@@ -3724,18 +4467,85 @@
         function stopNoise() { if(noiseSource) { noiseSource.stop(); noiseSource.disconnect(); noiseSource = null; } }
         function changeNoiseVol() { let vol = document.getElementById('rain-vol').value; if(globalGainNode && audioCtx) { globalGainNode.gain.setValueAtTime(vol, audioCtx.currentTime); } }
 
+        // --- IB HOLOGRAM TUTOR ---
+        let holoTyping;
+        function typeHoloText(text) {
+            const box = document.getElementById('holo-chat-box');
+            box.innerHTML = '';
+            let i = 0;
+            clearInterval(holoTyping);
+            playSynthTone(600, 'square', 0.1);
+            holoTyping = setInterval(() => {
+                box.innerHTML += text.charAt(i);
+                i++;
+                if (i >= text.length) { clearInterval(holoTyping); }
+            }, 30);
+        }
+
+        // --- IB PESTEL DRAG & DROP ---
+        function dragPestel(ev) { ev.dataTransfer.setData("text", ev.target.id); }
+        function allowDropPestel(ev) { ev.preventDefault(); ev.currentTarget.classList.add('drag-over'); }
+        function dropPestel(ev) {
+            ev.preventDefault();
+            ev.currentTarget.classList.remove('drag-over');
+            var data = ev.dataTransfer.getData("text");
+            ev.currentTarget.appendChild(document.getElementById(data));
+            playHitSound();
+        }
+        document.querySelectorAll('.pestel-zone').forEach(z => {
+            z.addEventListener('dragleave', (e) => e.currentTarget.classList.remove('drag-over'));
+        });
+        function resetPestel() {
+            const container = document.getElementById('pestel-draggables');
+            ['p-risk1','p-risk2','p-risk3','p-risk4','p-risk5','p-risk6'].forEach(id => {
+                if(document.getElementById(id)) container.appendChild(document.getElementById(id));
+            });
+        }
+
+        // --- IB SVG TRADE ROUTE MAP ---
+        function drawTradeRoutes(bloc) {
+            const linesGroup = document.getElementById('trade-lines');
+            linesGroup.innerHTML = ''; 
+            const stats = document.getElementById('map-stats');
+            playSynthTone(1000, 'triangle', 0.3);
+
+            let routes = [];
+            if(bloc === 'EU') { 
+                routes = [{x1:300, y1:100, x2:100, y2:80}, {x1:300, y1:100, x2:500, y2:150}]; 
+                stats.innerText = "EU: Unified Regulatory Power & Carbon Focus.";
+            } else if (bloc === 'RCEP') {
+                routes = [{x1:500, y1:150, x2:300, y2:100}, {x1:500, y1:150, x2:320, y2:180}];
+                stats.innerText = "RCEP: Massive Supply Chain Efficiency & E-commerce.";
+            } else if (bloc === 'MERCOSUR') {
+                routes = [{x1:150, y1:220, x2:100, y2:80}, {x1:150, y1:220, x2:300, y2:100}];
+                stats.innerText = "MERCOSUR: Raw Material Hub integrating with EU.";
+            } else if (bloc === 'AfCFTA') {
+                routes = [{x1:320, y1:180, x2:500, y2:150}, {x1:320, y1:180, x2:300, y2:100}];
+                stats.innerText = "AfCFTA: Future Market Growth & Youth Demographics.";
+            }
+
+            routes.forEach((r, idx) => {
+                let line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('x1', r.x1); line.setAttribute('y1', r.y1);
+                line.setAttribute('x2', r.x2); line.setAttribute('y2', r.y2);
+                line.setAttribute('class', 'route-line');
+                linesGroup.appendChild(line);
+                setTimeout(() => line.style.opacity = '1', 50 * idx);
+            });
+        }
+
         // --- RELAX ARCADE ---
-        function spinIt() { let el = document.getElementById('f-spin'); let current = el.style.transform.replace(/[^0-9]/g, '') || 0; el.style.transform = `rotate(${Number(current) + 1440}deg)`; }
+        function spinIt() { let el = document.getElementById('f-spin'); let current = parseInt(el.style.transform.replace(/[^0-9]/g, '')) || 0; el.style.transform = `rotate(${current + 1440}deg)`; }
         function playRps(move) { const arr = ['✊','✋','✌']; const comp = arr[Math.floor(Math.random()*3)]; document.getElementById('rps-res').innerText = `${comp} vs ${move}`; }
         function moveDot(dot) { dot.style.top = Math.random() * 80 + 10 + '%'; dot.style.left = Math.random() * 80 + 10 + '%'; }
         
-        let reactState = 0; let reactStart;
+        let reactState = 0; let reactStart; let reactTimeout;
         function testReact() {
             const box = document.getElementById('react-box'); const txt = document.getElementById('react-text');
             if(reactState === 0) {
                 box.style.background = 'var(--secondary)'; txt.innerText = 'Wait for Green...'; reactState = 1;
-                setTimeout(() => { if(reactState === 1) { box.style.background = 'var(--accent)'; txt.innerText = 'CLICK NOW!'; reactStart = Date.now(); reactState = 2; } }, Math.random()*3000 + 1000);
-            } else if(reactState === 1) { txt.innerText = 'Too early! Try again.'; reactState = 0; } 
+                reactTimeout = setTimeout(() => { if(reactState === 1) { box.style.background = 'var(--accent)'; txt.innerText = 'CLICK NOW!'; reactStart = Date.now(); reactState = 2; } }, Math.random()*3000 + 1000);
+            } else if(reactState === 1) { clearTimeout(reactTimeout); txt.innerText = 'Too early! Try again.'; reactState = 0; } 
             else if(reactState === 2) { let time = Date.now() - reactStart; txt.innerText = `${time} ms!`; reactState = 0; }
         }
         
@@ -3794,11 +4604,46 @@
         // --- QUIZ SYSTEM ---
         const efmQuizData = [ { question: "Macroeconomics originated after?", options: ["WWII", "1929 Great Depression", "Industrial Rev", "2008 Crisis"], correct: 1 }, { question: "Formula for National Income?", options: ["Y = C + I + G + (X - M)", "Y = C + I", "Y = GDP - Dep", "M = PxQx + PyQy"], correct: 0 } ];
         const hrmQuizData = [ { question: "According to Filippo, first step in HRM?", options: ["Controlling", "Procurement", "Planning", "Separation"], correct: 2 }, { question: "What is Moonlighting?", options: ["Night shifts", "Secret 2nd job", "Minimal hours", "AI tool"], correct: 1 } ];
+        const ibQuizData = [ 
+            { question: "According to Heckscher-Ohlin, countries export based on:", options: ["Zero-sum game", "Absolute advantage", "Abundant factors of production", "Psychic distance"], correct: 2 }, 
+            { question: "Which of these is a Non-Tariff Barrier (NTB)?", options: ["Ad Valorem Tax", "Local Content Requirement", "MFN status", "Compound Duty"], correct: 1 },
+            { question: "The Gravity Model relies on which two variables?", options: ["Culture & Law", "GDP & Distance", "Inflation & Exchange Rate", "Risk & Return"], correct: 1 },
+            { question: "In Stage 3 of the IPLC, what happens to the inventing country?", options: ["It stops production entirely", "It becomes a net importer", "It only exports to developing nations", "It raises tariffs"], correct: 1 },
+            { question: "Which of these is NOT an element of Porter's Diamond?", options: ["Firm Strategy & Rivalry", "Demand Conditions", "Psychic Distance", "Factor Endowments"], correct: 2 },
+            { question: "Which institution is the 'lender of last resort'?", options: ["WTO", "OECD", "World Bank", "IMF"], correct: 3 }
+        ];
+        
         let currentQuestion = 0; let score = 0; let activeQuizType = 'efm';
-        function startQuiz(type) { activeQuizType = type; currentQuestion = 0; score = 0; const prefix = type === 'hrm' ? 'hrm-' : ''; document.getElementById(prefix + 'start-screen').style.display = 'none'; document.getElementById(prefix + 'end-screen').style.display = 'none'; document.getElementById(prefix + 'question-screen').style.display = 'block'; loadQuestion(); }
-        function loadQuestion() { const data = activeQuizType === 'efm' ? efmQuizData : hrmQuizData; const prefix = activeQuizType === 'hrm' ? 'hrm-' : ''; const q = data[currentQuestion]; document.getElementById(prefix + 'question-text').innerText = q.question; const optionsBox = document.getElementById(prefix + 'options-box'); optionsBox.innerHTML = ''; document.getElementById(prefix + 'score-display').innerText = `Score: ${score} / ${data.length}`; q.options.forEach((opt, index) => { const btn = document.createElement('button'); btn.className = 'quiz-btn'; btn.innerText = opt; btn.onclick = () => checkAnswer(index, btn); optionsBox.appendChild(btn); }); }
-        function checkAnswer(selectedIndex, btnElement) { const data = activeQuizType === 'efm' ? efmQuizData : hrmQuizData; const prefix = activeQuizType === 'hrm' ? 'hrm-' : ''; const correctIndex = data[currentQuestion].correct; const allBtns = document.getElementById(prefix + 'options-box').children; for(let i=0; i<allBtns.length; i++) { allBtns[i].disabled = true; } if(selectedIndex === correctIndex) { btnElement.classList.add('correct-ans'); score++; } else { btnElement.classList.add('wrong-ans'); allBtns[correctIndex].classList.add('correct-ans'); } document.getElementById(prefix + 'score-display').innerText = `Score: ${score} / ${data.length}`; setTimeout(() => { currentQuestion++; if(currentQuestion < data.length) { loadQuestion(); } else { endQuiz(); } }, 1500); }
-        function endQuiz() { const data = activeQuizType === 'efm' ? efmQuizData : hrmQuizData; const prefix = activeQuizType === 'hrm' ? 'hrm-' : ''; const quizContainerId = activeQuizType === 'hrm' ? 'hrm-quiz-box' : 'quiz-box'; document.getElementById(prefix + 'question-screen').style.display = 'none'; document.getElementById(prefix + 'end-screen').style.display = 'block'; document.getElementById(prefix + 'final-score').innerText = `You Scored ${score} out of ${data.length}!`; if(score === data.length) { triggerConfetti(quizContainerId); } }
+        function startQuiz(type) { activeQuizType = type; currentQuestion = 0; score = 0; const prefix = type === 'hrm' ? 'hrm-' : type === 'ib' ? 'ib-' : ''; document.getElementById(prefix + 'start-screen').style.display = 'none'; document.getElementById(prefix + 'end-screen').style.display = 'none'; document.getElementById(prefix + 'question-screen').style.display = 'block'; loadQuestion(); }
+        
+        function loadQuestion() { 
+            const data = activeQuizType === 'efm' ? efmQuizData : activeQuizType === 'hrm' ? hrmQuizData : ibQuizData; 
+            const prefix = activeQuizType === 'hrm' ? 'hrm-' : activeQuizType === 'ib' ? 'ib-' : ''; 
+            const q = data[currentQuestion]; 
+            document.getElementById(prefix + 'question-text').innerText = q.question; 
+            const optionsBox = document.getElementById(prefix + 'options-box'); optionsBox.innerHTML = ''; 
+            document.getElementById(prefix + 'score-display').innerText = `Score: ${score} / ${data.length}`; 
+            q.options.forEach((opt, index) => { const btn = document.createElement('button'); btn.className = 'quiz-btn'; btn.innerText = opt; btn.onclick = () => checkAnswer(index, btn); optionsBox.appendChild(btn); }); 
+        }
+        
+        function checkAnswer(selectedIndex, btnElement) { 
+            const data = activeQuizType === 'efm' ? efmQuizData : activeQuizType === 'hrm' ? hrmQuizData : ibQuizData; 
+            const prefix = activeQuizType === 'hrm' ? 'hrm-' : activeQuizType === 'ib' ? 'ib-' : ''; 
+            const correctIndex = data[currentQuestion].correct; 
+            const allBtns = document.getElementById(prefix + 'options-box').children; 
+            for(let i=0; i<allBtns.length; i++) { allBtns[i].disabled = true; } 
+            if(selectedIndex === correctIndex) { btnElement.classList.add('correct-ans'); score++; } else { btnElement.classList.add('wrong-ans'); allBtns[correctIndex].classList.add('correct-ans'); } 
+            document.getElementById(prefix + 'score-display').innerText = `Score: ${score} / ${data.length}`; 
+            setTimeout(() => { currentQuestion++; if(currentQuestion < data.length) { loadQuestion(); } else { endQuiz(); } }, 1500); 
+        }
+        
+        function endQuiz() { 
+            const data = activeQuizType === 'efm' ? efmQuizData : activeQuizType === 'hrm' ? hrmQuizData : ibQuizData; 
+            const prefix = activeQuizType === 'hrm' ? 'hrm-' : activeQuizType === 'ib' ? 'ib-' : ''; 
+            const quizContainerId = activeQuizType === 'hrm' ? 'hrm-quiz-box' : activeQuizType === 'ib' ? 'ib-quiz-box' : 'quiz-box'; 
+            document.getElementById(prefix + 'question-screen').style.display = 'none'; document.getElementById(prefix + 'end-screen').style.display = 'block'; document.getElementById(prefix + 'final-score').innerText = `You Scored ${score} out of ${data.length}!`; if(score === data.length) { triggerConfetti(quizContainerId); } 
+        }
+        
         function triggerConfetti(containerId) { for(let i=0; i<80; i++) { const conf = document.createElement('div'); conf.className = 'confetti'; conf.style.left = Math.random() * 100 + '%'; conf.style.position = 'absolute'; conf.style.backgroundColor = ['var(--primary)', 'var(--secondary)', 'var(--accent)', '#f1c40f'][Math.floor(Math.random()*4)]; conf.style.animationDuration = (Math.random() * 2 + 2) + 's'; document.getElementById(containerId).appendChild(conf); setTimeout(() => conf.remove(), 4000); } }
 
         // --- ENDLESS MCQ GRINDER LOGIC ---
@@ -3835,10 +4680,6 @@
         function checkBadges() { const loginBadge = document.getElementById('badge-login'); if(loginBadge) loginBadge.classList.add('unlocked'); }
 
         // --- ARCADE MINIGAMES ---
-        let activeTTTPlayer = 'X';
-        function playNewTTT(cell) { if(cell.innerText === '') { cell.innerText = activeTTTPlayer; cell.style.color = activeTTTPlayer === 'X' ? 'var(--accent)' : 'var(--secondary)'; activeTTTPlayer = activeTTTPlayer === 'X' ? 'O' : 'X'; } }
-        function resetNewTTT(btn) { const cells = btn.parentElement.querySelectorAll('.tic-tac-grid div'); cells.forEach(c => c.innerText = ''); activeTTTPlayer = 'X'; }
-
         let cpsActive = false; let cpsCount = 0; let cpsTime = 10; let cpsInterval;
         function registerCpsClick(btn) { const scoreSpan = btn.parentElement.querySelector('.cps-score'); if(!cpsActive) { cpsActive = true; cpsCount = 0; cpsTime = 10; btn.innerText = "CLICK!"; cpsInterval = setInterval(() => { cpsTime--; if(cpsTime <= 0) { clearInterval(cpsInterval); cpsActive = false; btn.innerText = `DONE! ${cpsCount/10} Clicks/sec`; setTimeout(() => btn.innerText = "START AGAIN", 3000); } }, 1000); } cpsCount++; scoreSpan.innerText = cpsCount; }
 
@@ -3918,9 +4759,6 @@
             checkBadges();
         });
 
-    </script>
-</body>
-</html>
     </script>
 </body>
 </html>
